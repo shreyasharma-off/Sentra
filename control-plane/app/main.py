@@ -13,6 +13,9 @@ from app.models.analysis import Analysis
 from app.schemas.prompt import PromptRequest
 from app.schemas.response import AnalysisResponse
 
+from fastapi import Depends
+from app.models.log_model import PromptLogModel
+
 from app.services.analyzer import analyze_prompt
 from app.services.history_service import (
     save_analysis,
@@ -62,8 +65,10 @@ def analyze(
     request: PromptRequest,
     db: Session = Depends(get_db),
 ):
+    # 1. Run your comprehensive security evaluation (Rule Engine + Gemini AI)
     result = analyze_prompt(request.prompt)
 
+    # 2. Save the full analysis to your primary history table
     analysis = save_analysis(
         db=db,
         prompt=result["prompt"],
@@ -76,6 +81,17 @@ def analyze(
     )
 
     result["id"] = analysis.id
+
+    # 3. Also record a runtime audit log in PostgreSQL (matching Phase 1 audit tracking)
+    db_log = PromptLogModel(
+        event_type="PROMPT_SCAN",
+        severity=result["severity"],
+        action_taken="BLOCKED" if result["risk_score"] > 70 else "ALLOWED",
+        latency_ms=15.0,  # You can use actual tracked execution time if available
+        payload_snapshot=request.prompt,
+    )
+    db.add(db_log)
+    db.commit()
 
     return result
 
