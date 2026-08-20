@@ -28,6 +28,8 @@
   --signal-warning: #f59e0b;
   --signal-critical: #ef4444;
   --signal-info: #8b93a1;
+  --signal-high: #f97316;
+  --signal-low: #3b82f6;
 
   /* ---- Signal tints (backgrounds for badges/banners) ---- */
   --accent-blue-tint: rgba(59, 130, 246, 0.1);
@@ -35,6 +37,8 @@
   --signal-warning-tint: rgba(245, 158, 11, 0.1);
   --signal-critical-tint: rgba(239, 68, 68, 0.1);
   --signal-info-tint: rgba(139, 147, 161, 0.1);
+  --signal-high-tint: rgba(249, 115, 22, 0.1);
+  --signal-low-tint: rgba(59, 130, 246, 0.1);
 
   /* ---- Category palette (charts only — non-severity groupings) ---- */
   --category-1: #3b82f6;

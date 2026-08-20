@@ -1,0 +1,9 @@
+.preview-prompt-modal__prompt {
+  color: var(--text-secondary);
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  white-space: pre-wrap;
+  word-break: break-word;
+}

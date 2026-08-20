@@ -32,7 +32,7 @@ export default function DashboardPage() {
         <SegmentedControl options={TIME_RANGE_OPTIONS} value={timeRange} onChange={setTimeRange} />
       </div>
 
-      <KpiRow />
+      <KpiRow key={Date.now()} />
 
       <div className="dashboard__charts-row">
         <Card title="Detection Timeline" className="dashboard__timeline-card">

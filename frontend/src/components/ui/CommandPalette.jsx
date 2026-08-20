@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   ScanSearch,
+  Crosshair,
   History,
   FileText,
   Settings,
@@ -13,6 +14,7 @@ import './CommandPalette.css';
 const COMMANDS = [
   { id: 'dashboard', label: 'Go to Dashboard', to: '/', icon: LayoutDashboard, group: 'Navigate' },
   { id: 'analysis', label: 'Run New Analysis', to: '/analysis', icon: ScanSearch, group: 'Navigate' },
+  { id: 'attack-simulation', label: 'Go to Attack Simulation Lab', to: '/attack-simulation', icon: Crosshair, group: 'Navigate' },
   { id: 'history', label: 'Go to History', to: '/history', icon: History, group: 'Navigate' },
   { id: 'reports', label: 'Go to Reports', to: '/reports', icon: FileText, group: 'Navigate' },
   { id: 'settings', label: 'Go to Settings', to: '/settings', icon: Settings, group: 'Navigate' },

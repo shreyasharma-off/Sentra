@@ -56,3 +56,19 @@
 .badge--neutral .badge__dot {
   background-color: var(--text-tertiary);
 }
+
+.badge--high {
+  background-color: var(--signal-high-tint);
+  color: var(--signal-high);
+}
+.badge--high .badge__dot {
+  background-color: var(--signal-high);
+}
+
+.badge--low {
+  background-color: var(--signal-low-tint);
+  color: var(--signal-low);
+}
+.badge--low .badge__dot {
+  background-color: var(--signal-low);
+}

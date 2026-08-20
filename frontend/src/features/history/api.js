@@ -10,12 +10,25 @@ export async function fetchAnalysisHistory() {
   return {
     records: data.map((item) => ({
       id: item.id,
+
       prompt: item.prompt,
       context: "Prompt",
+
       riskScore: item.risk_score,
       riskLevel: (item.severity || "safe").toLowerCase(),
+
+      confidence: item.confidence,
+      summary: item.summary,
+      businessImpact: item.business_impact,
+      attackScenario: item.attack_scenario,
+      owasp: item.owasp,
+      recommendations: item.recommendations || [],
+      securePrompt: item.secure_prompt,
+
       detections: item.detections || [],
+
       analyzedAt: item.created_at,
+
       source: "Sentra",
       model: "Gemini",
     })),

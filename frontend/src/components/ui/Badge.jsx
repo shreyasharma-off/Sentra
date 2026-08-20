@@ -6,6 +6,8 @@ const VARIANT_CLASS = {
   critical: 'badge--critical',
   info: 'badge--info',
   neutral: 'badge--neutral',
+  high: 'badge--high',
+  low: 'badge--low',
 };
 
 /**

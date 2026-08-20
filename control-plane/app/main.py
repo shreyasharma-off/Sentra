@@ -70,15 +70,26 @@ def analyze(
 
     # 2. Save the full analysis to your primary history table
     analysis = save_analysis(
-        db=db,
-        prompt=result["prompt"],
-        risk_score=result["risk_score"],
-        severity=result["severity"],
-        message=result["message"],
-        detections=result.get("detections"),
-        ai_confidence=result.get("ai_confidence"),
-        analysis_engine="Rule Engine + Gemini AI",
-    )
+    db=db,
+    prompt=result["prompt"],
+    risk_score=result["risk_score"],
+    severity=result["severity"],
+
+    # Legacy field
+    message=result.get("message"),
+
+    # Enterprise analysis fields
+    summary=result.get("summary"),
+    business_impact=result.get("business_impact"),
+    attack_scenario=result.get("attack_scenario"),
+    secure_prompt=result.get("secure_prompt"),
+    owasp=result.get("owasp"),
+    recommendations=result.get("recommendations"),
+
+    detections=result.get("detections"),
+    ai_confidence=result.get("ai_confidence"),
+    analysis_engine="Rule Engine + Gemini AI",
+)
 
     result["id"] = analysis.id
 

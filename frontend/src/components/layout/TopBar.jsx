@@ -6,6 +6,7 @@ import './TopBar.css';
 const PAGE_TITLES = {
   '/': { title: 'Dashboard', subtitle: 'Real-time prompt security overview' },
   '/analysis': { title: 'Analysis', subtitle: 'Run a new prompt security scan' },
+  '/attack-simulation': { title: 'Attack Simulation Lab', subtitle: 'AI red-teaming attack catalogue' },
   '/history': { title: 'History', subtitle: 'Full event log of analyzed prompts' },
   '/reports': { title: 'Reports', subtitle: 'Executive security summaries' },
   '/settings': { title: 'Settings', subtitle: 'Manage your account and platform' },

@@ -57,6 +57,8 @@ export default function AnalysisPage() {
 
         setResult(res);
         setPhase("success");
+
+        window.dispatchEvent(new Event("dashboard-refresh"));
       } catch (err) {
         setErrorMessage(err.message || "Analysis failed.");
         setPhase("error");

@@ -1,0 +1,72 @@
+.attack-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.attack-toolbar__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.attack-toolbar__search {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.attack-toolbar__spacer {
+  flex: 1;
+  min-width: var(--space-2);
+}
+
+.attack-toolbar__count {
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.attack-filter-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 32px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-caption-size);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.attack-filter-trigger:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.attack-filter-trigger--active {
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  background-color: var(--accent-blue-tint);
+}
+
+.attack-filter-trigger__chevron--open {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 900px) {
+  .attack-toolbar__search {
+    width: 100%;
+  }
+}

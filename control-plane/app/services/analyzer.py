@@ -48,6 +48,7 @@ def analyze_prompt(prompt: str):
         "severity": severity,
         "ai_confidence": gemini.get("confidence"),
         "message": message,
+        "summary": message,
         "business_impact": gemini.get("business_impact", ""),
         "attack_scenario": gemini.get("attack_scenario", ""),
         "owasp": gemini.get("owasp", ""),

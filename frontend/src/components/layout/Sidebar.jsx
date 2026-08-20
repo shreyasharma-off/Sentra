@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   ScanSearch,
+  Crosshair,
   History,
   FileText,
   Settings,
@@ -13,6 +14,7 @@ import './Sidebar.css';
 const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/analysis', label: 'Analysis', icon: ScanSearch },
+  { to: '/attack-simulation', label: 'Attack Simulation', icon: Crosshair },
   { to: '/history', label: 'History', icon: History },
   { to: '/reports', label: 'Reports', icon: FileText },
 ];

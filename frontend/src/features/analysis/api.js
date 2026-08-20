@@ -42,7 +42,7 @@ export async function analyzePrompt(
   DETECTION_CATEGORIES.forEach((category) => {
     detections[category.id] = {
       status: "clear",
-      confidence: data.ai_confidence || 0,
+      confidence: data.confidence || 0,
       reasoning: "No threats detected.",
     };
   });
@@ -57,7 +57,7 @@ export async function analyzePrompt(
         detection.severity === "Critical"
           ? "flagged-critical"
           : "flagged-warning",
-      confidence: data.ai_confidence || 0,
+      confidence: data.confidence || 0,
       reasoning: detection.description,
     };
   });
@@ -98,7 +98,7 @@ export async function analyzePrompt(
 
     securePrompt: data.secure_prompt,
 
-    summary: data.message,
+    summary: data.summary,
 
     detections,
 

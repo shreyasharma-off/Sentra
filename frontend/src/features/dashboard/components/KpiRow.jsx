@@ -19,17 +19,26 @@ export default function KpiRow() {
   });
 
   useEffect(() => {
-    async function load() {
-      try {
-        const data = await getDashboard();
-        setStats(data);
-      } catch (err) {
-        console.error(err);
-      }
+  async function load() {
+    try {
+      const data = await getDashboard();
+      setStats(data);
+    } catch (err) {
+      console.error(err);
     }
+  }
 
-    load();
-  }, []);
+  load();
+
+ const interval = setInterval(load, 10000);
+
+window.addEventListener("dashboard-refresh", load);
+
+return () => {
+  clearInterval(interval);
+  window.removeEventListener("dashboard-refresh", load);
+};
+}, []);
 
   return (
     <div className="kpi-row">

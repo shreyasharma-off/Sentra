@@ -17,7 +17,7 @@ export default function HistoryDrawer({
     record.context;
 
   return (
-    <Drawer open={Boolean(record)} onClose={onClose} title="Analysis Detail">
+    <Drawer open={Boolean(record)} onClose={onClose} title="Analysis Details">
       <section className="history-drawer__section">
         <span className="text-h3-label">Prompt</span>
         <p className="text-mono history-drawer__prompt">{record.prompt}</p>
@@ -40,6 +40,13 @@ export default function HistoryDrawer({
         </div>
 
         <div className="history-drawer__meta-item">
+          <span className="text-h3-label">Confidence</span>
+          <span className="text-body-sm">
+            {record.confidence != null ? `${record.confidence}%` : "N/A"}
+          </span>
+        </div>
+
+        <div className="history-drawer__meta-item">
           <span className="text-h3-label">Analyzed</span>
           <span
             className="text-body-sm"
@@ -50,6 +57,34 @@ export default function HistoryDrawer({
         </div>
       </section>
 
+      {record.summary && (
+        <section className="history-drawer__section">
+          <span className="text-h3-label">Executive Summary</span>
+          <p className="text-body-sm">{record.summary}</p>
+        </section>
+      )}
+
+      {record.businessImpact && (
+        <section className="history-drawer__section">
+          <span className="text-h3-label">Business Impact</span>
+          <p className="text-body-sm">{record.businessImpact}</p>
+        </section>
+      )}
+
+      {record.attackScenario && (
+        <section className="history-drawer__section">
+          <span className="text-h3-label">Attack Scenario</span>
+          <p className="text-body-sm">{record.attackScenario}</p>
+        </section>
+      )}
+
+      {record.owasp && (
+        <section className="history-drawer__section">
+          <span className="text-h3-label">OWASP Mapping</span>
+          <p className="text-body-sm">{record.owasp}</p>
+        </section>
+      )}
+
       <section className="history-drawer__section">
         <span className="text-h3-label">Detections</span>
 
@@ -59,7 +94,9 @@ export default function HistoryDrawer({
               <li key={index}>
                 <strong>{d.name || d.type || "Detection"}</strong>
 
-                {d.confidence != null && <> ({Math.round(d.confidence)}%)</>}
+                {d.confidence != null && (
+                  <> ({Math.round(d.confidence)}%)</>
+                )}
 
                 {d.description && <> — {d.description}</>}
               </li>
@@ -70,6 +107,29 @@ export default function HistoryDrawer({
         )}
       </section>
 
+      {Array.isArray(record.recommendations) &&
+        record.recommendations.length > 0 && (
+          <section className="history-drawer__section">
+            <span className="text-h3-label">Recommendations</span>
+
+            <ul className="history-drawer__detections">
+              {record.recommendations.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+      {record.securePrompt && (
+        <section className="history-drawer__section">
+          <span className="text-h3-label">Secure Prompt</span>
+
+          <p className="text-mono history-drawer__prompt">
+            {record.securePrompt}
+          </p>
+        </section>
+      )}
+
       <ResultSummaryBar
         riskScore={record.riskScore}
         riskLevel={record.riskLevel}
@@ -78,4 +138,4 @@ export default function HistoryDrawer({
       />
     </Drawer>
   );
-}
+} 

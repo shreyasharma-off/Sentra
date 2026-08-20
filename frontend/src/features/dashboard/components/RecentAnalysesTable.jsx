@@ -15,27 +15,26 @@ export default function RecentAnalysesTable() {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    async function load() {
-      try {
-        const history = await getHistory();
-
-        const formatted = history.slice(0, 5).map((item) => ({
-          id: item.id,
-          prompt: item.prompt,
-          riskScore: item.risk_score,
-          riskLevel: item.severity,
-          detections: (item.detections || []).map((d) => d.name),
-          time: new Date(item.created_at).toLocaleString(),
-        }));
-
-        setRows(formatted);
-      } catch (err) {
-        console.error(err);
-      }
+  async function load() {
+    try {
+      const history = await getHistory();
+      setAnalyses(history);
+    } catch (err) {
+      console.error(err);
     }
+  }
 
-    load();
-  }, []);
+  load();
+
+  const interval = setInterval(load, 10000);
+
+  window.addEventListener("dashboard-refresh", load);
+
+  return () => {
+    clearInterval(interval);
+    window.removeEventListener("dashboard-refresh", load);
+  };
+}, []);
 
   const columns = [
     {
